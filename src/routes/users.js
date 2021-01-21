@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.post('/', function(req, res, next) {
+router.post('/register', function(req, res, next) {
   var name = req.body.name;
   var email = req.body.email;
   var mobile = req.body.mobile;

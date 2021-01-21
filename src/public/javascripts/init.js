@@ -1,7 +1,23 @@
 // Fake in memory filesystem
+
+var BASE_URL = 'localhost:3000/';
+
+/**
+ * Encapsulate all utils
+ */
+var Utils = {  
+    /**
+     * 
+     * @param {String} val 
+     */
+    isEmpty : function(val) {
+        return val === undefined || val.length == 0 ? true : false;
+    }
+
+}
+
 var fs = {
-    'help.txt' : 'Maybe you should just quit?',
-    'start.sh' : '',
+    'help.txt': 'Maybe you should just quit? Type help',
     'projects': {
         'start.txt': 'Hello this is file baz.txt',
         'quux.txt': "Lorem Ispum (quux.txt)",
@@ -30,7 +46,7 @@ function restore_cwd(fs, path) {
         var dir_name = path.shift();
         if (!is_dir(fs[dir_name])) {
             throw new Error('Internal Error Invalid directory ' +
-                            $.terminal.escape_brackets(dir_name));
+                $.terminal.escape_brackets(dir_name));
         }
         fs = fs[dir_name];
     }
@@ -43,7 +59,7 @@ function is_file(obj) {
     return typeof obj === 'string';
 }
 var commands = {
-    cd: function(dir) {
+    cd: function (dir) {
         this.pause();
         if (dir === '/') {
             path = [];
@@ -68,11 +84,11 @@ var commands = {
         }
         this.resume();
     },
-    ls: function() {
+    ls: function () {
         if (!is_dir(cwd)) {
             throw new Error('Internal Error Invalid directory');
         }
-        var dir = Object.keys(cwd).map(function(key) {
+        var dir = Object.keys(cwd).map(function (key) {
             if (is_dir(cwd[key])) {
                 return key + '/';
             }
@@ -80,31 +96,84 @@ var commands = {
         });
         this.echo(dir.join('\n'));
     },
-    cat: function(file) {
-        if (!is_file(cwd[file])) {
-            this.error($.terminal.escape_brackets(file) + " don't exists");
-        } else {
-            this.echo(cwd[file]);
-        }
-    },
-    help: function() {
+    cat: cat,
+    less: cat,
+    help: function () {
         // Add some funny sentences
         this.echo('Available commands: ' + Object.keys(commands).join(', '));
     },
-    pwd: function() {
+    pwd: function () {
         this.echo(path.join('/') + "/");
     },
-    grep: function() {
+    start: function () {
+        var user = {
+
+        };
+        var name, email, mobile;
+        readName();
+        function readName() {
+            term.read('Enter name: ').then(function (val) {
+                if (Utils.isEmpty(val)) {
+                    readName();
+                }
+                else {
+                    user.name = val;
+                    readEmail();
+                }
+            });
+        }
+
+        function readEmail() {
+            term.read('Enter email: ').then(function (val) {
+                if (Utils.isEmpty(val)) {
+                    readEmail();
+                }
+                else {
+                    user.email = val;
+                    readMobile();
+                }
+            });
+        }
+
+        function readMobile() {
+            term.read('Enter mobile: ').then(function (val) {
+                if (Utils.isEmpty(val)) {
+                    readMobile();
+                }
+                else {
+                    user.mobile = val;
+                    // Register the user
+                    jQuery.ajax({
+                        "url": '/users/register',
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json"
+                        },
+                        "data": JSON.stringify(user),
+                    });
+                }
+            });
+        }
 
     }
 };
+
+function cat(file) {
+    if (!is_file(cwd[file])) {
+        this.error($.terminal.escape_brackets(file) + " don't exists");
+    } else {
+        this.echo(cwd[file]);
+    }
+}
+
 function completion(string, callback) {
     var command = this.get_command();
     var cmd = $.terminal.parse_command(command);
     function dirs(cwd) {
-        return Object.keys(cwd).filter(function(key) {
+        return Object.keys(cwd).filter(function (key) {
             return is_dir(cwd[key]);
-        }).map(function(dir) {
+        }).map(function (dir) {
             return dir + '/';
         });
     }
@@ -126,12 +195,12 @@ function completion(string, callback) {
                 p.pop();
             }
             var prefix = string.replace(/\/[^/]*$/, '');
-            callback(dirs(restore_cwd(fs, p)).map(function(dir) {
+            callback(dirs(restore_cwd(fs, p)).map(function (dir) {
                 return prefix + '/' + dir;
             }));
         }
-    } else if (cmd.name === 'cat') {
-        var files = Object.keys(cwd).filter(function(key) {
+    } else if (cmd.name === 'cat' || cmd.name === 'less') {
+        var files = Object.keys(cwd).filter(function (key) {
             return is_file(cwd[key]);
         });
         callback(files);
