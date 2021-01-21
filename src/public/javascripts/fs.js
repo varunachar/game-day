@@ -22,7 +22,7 @@ var fileSystem = {
             "timeout": 10,
             "headers": {
                 "Content-Type": "application/json",
-                "userId" : window.user.userId,
+                "userId" : window.user.id,
             },
             "data": JSON.stringify({"folder": dir})
         });

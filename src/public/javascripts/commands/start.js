@@ -32,21 +32,27 @@ function start() {
             }
             else {
                 user.mobile = val;
+                term.pause();
                 // Register the user
                 jQuery.ajax({
                     "url": '/users/register',
                     "method": "POST",
-                    "timeout": 10,
                     "headers": {
                         "Content-Type": "application/json"
                     },
                     "data": JSON.stringify(user),
-                    "success" : function(resp) {
-                        var parsedResponse = JSON.parse(resp);
-                        window.user = parsedResponse.user;
-                        fileSystem.addFolders(parsedResponse.folders);
-                        term.echo("\n\n\nRegistered, look again!");
-                    }
+                }).done(function (resp) {
+                    var parsed = JSON.parse(resp);
+                    var user = new User(parsed.user.id,
+                        parsed.user.name,
+                        parsed.user.email,
+                        parsed.user.phone,
+                    );
+                    window.user = user;
+                    fileSystem.addFolders(parsed.folders);
+                    term.echo("\n\n\nRegistered, look again!");
+                }).always(function () {
+                    term.resume();
                 });
             }
         });

@@ -8,18 +8,12 @@ var router = express.Router();
 
 class User {
 
-  PASSWORD_SIZE = 8;
-
   constructor(name, email, phone) {
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.id = generateId();
-    this.stage = 1;
-    this.stageOnePassword = Math.random().toString(36).substring(2, this.PASSWORD_SIZE) + Math.random().toString(36).substring(2, this.PASSWORD_SIZE);
-    this.stageTwoPassword = Math.random().toString(36).substring(2, this.PASSWORD_SIZE) + Math.random().toString(36).substring(2, this.PASSWORD_SIZE);
-    this.stageThreePassword = Math.random().toString(36).substring(2, this.PASSWORD_SIZE) + Math.random().toString(36).substring(2, this.PASSWORD_SIZE);
-    this.stageFourPassword = Math.random().toString(36).substring(2, this.PASSWORD_SIZE) + Math.random().toString(36).substring(2, this.PASSWORD_SIZE);
+    this.level = 1;
   };
 
   getUser() {
@@ -27,14 +21,25 @@ class User {
       name : this.name,
       email: this.email,
       phone: this.phone,
-      stage: this.stage,
+      level: this.level,
+      id: this.id,
     };
   }
 
   levelUp() {
-    this.stage +=1;
+    this.level +=1;
   }
 
+}
+
+function checkUser(req) {
+  var userId = req.headers['userid'];
+  if (!userId) {
+      var err = new Error();
+      err.status = 404;
+      return err;
+  };
+  return null;
 }
 
 /* GET users listing. */
@@ -43,7 +48,17 @@ router.post('/register', function (req, res, next) {
   user = saveUser(user);
   res.send(JSON.stringify({
     user: user.getUser(),
-    folders: mapDb.mapDb[user.stage]
+    folders: mapDb.mapDb[user.level]
+  }))
+});
+
+/* GET users listing. */
+router.post('/level', function (req, res, next) {
+  var playable = false;
+  var user = userDb.usersDb.get(req.headers['userId']);
+  
+  res.send(JSON.stringify({
+    playable: playable
   }))
 });
 

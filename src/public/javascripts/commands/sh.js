@@ -1,5 +1,5 @@
 /**
- * 
+ * Executes a file by adding command and then executing it.
  * @param {String} file 
  */
 function sh(file) {
@@ -12,5 +12,5 @@ function sh(file) {
         return;
     }
     var commandName = file.split('.')[0];
-    commands[commandName] = window[commandName]();
+    window[commandName]();
 }

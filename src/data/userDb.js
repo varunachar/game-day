@@ -5,7 +5,7 @@ const usersDb = {
      * @param {User} id 
      */
     get: function(id) {
-        return this['id'];
+        return this[id];
     },
     /**
      * Saves the user
