@@ -36,7 +36,7 @@ function start() {
                 jQuery.ajax({
                     "url": '/users/register',
                     "method": "POST",
-                    "timeout": 0,
+                    "timeout": 10,
                     "headers": {
                         "Content-Type": "application/json"
                     },

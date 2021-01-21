@@ -11,4 +11,20 @@ var fileSystem = {
             this.dir[key] = value;
         }
     },
+    /**
+     * Unused
+     * @param {String} dir 
+     */
+    isLocked: function(dir) {
+        return jQuery.ajax({
+            "url": '/map/folder',
+            "method": "POST",
+            "timeout": 10,
+            "headers": {
+                "Content-Type": "application/json",
+                "userId" : window.user.userId,
+            },
+            "data": JSON.stringify({"folder": dir})
+        });
+    }
 };
