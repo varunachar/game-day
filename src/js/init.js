@@ -1,7 +1,8 @@
 // Fake in memory filesystem
 var fs = {
+    'help.txt' : 'Maybe you should just quit?',
     'projects': {
-        'baz.txt': 'Hello this is file baz.txt',
+        'start.txt': 'Hello this is file baz.txt',
         'quux.txt': "Lorem Ispum (quux.txt)",
         'foo.txt': "Hello, World!",
         'bar.txt': "Wellcome to the bar",
