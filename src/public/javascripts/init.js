@@ -2,36 +2,6 @@
 
 var BASE_URL = 'localhost:3000/';
 
-/**
- * Encapsulate all utils
- */
-var Utils = {  
-    /**
-     * 
-     * @param {String} val 
-     */
-    isEmpty : function(val) {
-        return val === undefined || val.length == 0 ? true : false;
-    }
-
-}
-
-var fs = {
-    'help.txt': 'Maybe you should just quit? Type help',
-    'projects': {
-        'start.txt': 'Hello this is file baz.txt',
-        'quux.txt': "Lorem Ispum (quux.txt)",
-        'foo.txt': "Hello, World!",
-        'bar.txt': "Wellcome to the bar",
-        "terminal": {
-            "foo": {
-                "bar.txt": "hello bar",
-                "baz.txt": "baz content"
-            }
-        }
-    }
-};
-
 var path = [];
 var cwd = fs;
 
@@ -105,58 +75,7 @@ var commands = {
     pwd: function () {
         this.echo(path.join('/') + "/");
     },
-    start: function () {
-        var user = {
-
-        };
-        var name, email, mobile;
-        readName();
-        function readName() {
-            term.read('Enter name: ').then(function (val) {
-                if (Utils.isEmpty(val)) {
-                    readName();
-                }
-                else {
-                    user.name = val;
-                    readEmail();
-                }
-            });
-        }
-
-        function readEmail() {
-            term.read('Enter email: ').then(function (val) {
-                if (Utils.isEmpty(val)) {
-                    readEmail();
-                }
-                else {
-                    user.email = val;
-                    readMobile();
-                }
-            });
-        }
-
-        function readMobile() {
-            term.read('Enter mobile: ').then(function (val) {
-                if (Utils.isEmpty(val)) {
-                    readMobile();
-                }
-                else {
-                    user.mobile = val;
-                    // Register the user
-                    jQuery.ajax({
-                        "url": '/users/register',
-                        "method": "POST",
-                        "timeout": 0,
-                        "headers": {
-                            "Content-Type": "application/json"
-                        },
-                        "data": JSON.stringify(user),
-                    });
-                }
-            });
-        }
-
-    }
+    start: start
 };
 
 function cat(file) {
