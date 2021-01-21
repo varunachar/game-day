@@ -1,6 +1,7 @@
 // Fake in memory filesystem
 var fs = {
     'help.txt' : 'Maybe you should just quit?',
+    'start.sh' : '',
     'projects': {
         'start.txt': 'Hello this is file baz.txt',
         'quux.txt': "Lorem Ispum (quux.txt)",
@@ -144,4 +145,4 @@ var term = $('body').terminal(commands, {
 });
 
 // Hide the copy write text
-$("div[data-index='0']").css("display", "none");
+term.update(0, "Razorpay Engineering, copywrite 2021");
