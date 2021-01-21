@@ -21,10 +21,10 @@ function whatzit2() {
     term.echo("\nPuzzle 2: " +
     "\n" +
     "\n ----------------------------" +
-    "\n|                  comfort  |" +
-    "\n|  close           comfort  |" +
-    "\n|  close           comfort  |" +
-    "\n|                  comfort  |" +
+    "\n|           SUN             |" +
+    "\n|          ANTIQUE          |" +
+    "\n|          ARCHAIC          |" +
+    "\n|          ANCIENT          |" +
     "\n ----------------------------"
     );
     processAnswer(whatzit2, theEnd);
@@ -32,7 +32,7 @@ function whatzit2() {
 
 function theEnd() {
 
-    term.echo("Well done! This rocket nearing escape velocity! Let's see if you know this:");
+    term.echo("Well done! This rocket is nearing escape velocity! Let's see if you know this:");
 }
 
 /**

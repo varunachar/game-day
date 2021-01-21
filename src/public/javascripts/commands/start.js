@@ -50,7 +50,7 @@ function start() {
                     );
                     window.user = user;
                     fileSystem.addFolders(parsed.folders);
-                    term.echo("\n\n\nRegistered, look again!");
+                    term.echo("\n\n\nThank you! \n\n\nOf Course I Still Love You");
                 }).always(function () {
                     term.resume();
                 });
