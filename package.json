@@ -1,0 +1,14 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Beat this to get ahead",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Varun Achar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
