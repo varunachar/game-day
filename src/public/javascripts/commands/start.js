@@ -42,7 +42,10 @@ function start() {
                     },
                     "data": JSON.stringify(user),
                     "success" : function(resp) {
-                        window.user = JSON.parse(resp);
+                        var parsedResponse = JSON.parse(resp);
+                        window.user = parsedResponse.user;
+                        fileSystem.addFolders(parsedResponse.folders);
+                        term.echo("\n\n\nRegistered, look again!");
                     }
                 });
             }

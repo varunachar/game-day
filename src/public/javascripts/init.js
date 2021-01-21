@@ -3,10 +3,10 @@
 var BASE_URL = 'localhost:3000/';
 
 var path = [];
-var cwd = fs;
+var cwd = fileSystem.dir;
 
 /**
- * 
+ * Restore current working directory
  * @param {*} fs 
  * @param {Array} path 
  */
