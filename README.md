@@ -3,12 +3,8 @@ Hackathon project built for Razorpay HTTP 402
 
 ### Setup
 
-cd into the src directory and execute the commands below
-
-```js
+```bash
+cd src
 npm install
+npm run start
 ```
-
-### Run
-`npm run start`
-
