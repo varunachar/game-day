@@ -132,4 +132,12 @@ var term = $('body').terminal(commands, {
     prompt: 'user@rzp-engg:/' + path.join('/') + '$ ',
     greetings: "Razorpay Engineering, copywrite 2021",
     completion: completion,
+    exceptionHandler: function(exception) {
+        if (exception) {
+            term.echo("[[;red;]" + exception.message + "]");
+        }
+        else {
+            term.echo("[[;red;]sh: command not found" + exception.message + "]");
+        }
+    }
 });
