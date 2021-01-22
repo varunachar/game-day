@@ -1,6 +1,8 @@
 // Fake in memory filesystem
 
-var BASE_URL = 'https://0fce6edaadcf.ngrok.io';
+
+// Change to localhost:3000 when developing locally
+var BASE_URL = 'https://000e83f74dad.ngrok.io';
 
 var path = [];
 var cwd = fileSystem.dir;

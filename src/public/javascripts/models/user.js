@@ -40,6 +40,8 @@ class User {
             else {
                 playFn();
             }
+        }).fail(function(xhr, status, err) {
+            term.echo('You got rate limited');
         }).always(function () {
             term.resume();
         });

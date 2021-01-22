@@ -52,6 +52,8 @@ function start() {
                     fileSystem.addFolders(parsed.folders);
                     term.echo("\n\n\nThank you! \n\n\nNow, you'd think I'd ask you to Just Read The Instructions." +  
                     "\nThat'd make it too easy. But, don't worry, Of Course I Still Love You!\n\n");
+                }).fail(function(xhr, status, err){
+                    term.echo('You got rate limited');
                 }).always(function () {
                     term.resume();
                 });
