@@ -50,7 +50,8 @@ function start() {
                     );
                     window.user = user;
                     fileSystem.addFolders(parsed.folders);
-                    term.echo("\n\n\nThank you! \n\n\nOf Course I Still Love You");
+                    term.echo("\n\n\nThank you! \n\n\nNow, you'd think I'd ask you to Just Read The Instructions." +  
+                    "\nThat'd make it too easy. But, don't worry, Of Course I Still Love You!\n\n");
                 }).always(function () {
                     term.resume();
                 });

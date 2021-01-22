@@ -1,11 +1,11 @@
 function lander() {
     term.echo("You got that right!\nHere's your next clue: ");
-    term.echo("\nFind the familiar phrase or saying in these arrangement of letters");
+    term.echo("\n");
     whatzit1();
 }
 
 function whatzit1() {
-    term.echo("\nPuzzle 1: " +
+    term.echo("\nFind the familiar phrase or saying in these arrangement of letters: " +
         "\n" +
         "\n ----------------------------" +
         "\n|                  comfort  |" +
@@ -13,26 +13,25 @@ function whatzit1() {
         "\n|  close           comfort  |" +
         "\n|                  comfort  |" +
         "\n ----------------------------"
-        );
+    );
     processAnswer(whatzit1, whatzit2);
 }
 
 function whatzit2() {
-    term.echo("\nPuzzle 2: " +
-    "\n" +
-    "\n ----------------------------" +
-    "\n|           SUN             |" +
-    "\n|          ANTIQUE          |" +
-    "\n|          ARCHAIC          |" +
-    "\n|          ANCIENT          |" +
-    "\n ----------------------------"
+    term.echo("\nName the movie: " +
+        "\n" +
+        "\n ----------------------------" +
+        "\n|    ---->  GLOCK           |" +
+        "\n|          BERETTA          |" +
+        "\n|           COLT            |" +
+        "\n|          WALTER           |" +
+        "\n ----------------------------"
     );
     processAnswer(whatzit2, theEnd);
 }
 
 function theEnd() {
-
-    term.echo("Well done! This rocket is nearing escape velocity! Let's see if you know this:");
+    term.echo("Well done! This rocket is nearing escape velocity!");
 }
 
 /**
@@ -41,21 +40,21 @@ function theEnd() {
  * @param {Function} nextPuzzle 
  */
 function processAnswer(currentPuzzle, next) {
-    term.read('Answer: ').then(function(answer) {
-        if(!answer|| Utils.isEmpty(answer)) {
+    term.read('Answer: ').then(function (answer) {
+        if (!answer || Utils.isEmpty(answer)) {
             currentPuzzle();
         }
         else {
             term.pause();
-            checkSolution(currentPuzzle.name, answer).done(function(data) {
-                if(!data.correct) {
+            checkSolution(currentPuzzle.name, answer).done(function (data) {
+                if (!data.correct) {
                     term.echo('Please try again!');
                     return currentPuzzle();
                 }
                 if (next) {
                     next();
                 };
-            }).always(function(){
+            }).always(function () {
                 term.resume();
             });
         }

@@ -2,8 +2,8 @@ const mapDb = {
     1 : {
         Documents: {
             startup: {
-                tesla : {
-                    'about.txt' : '\n\nI make awesome cars\n\n'
+                airbnb : {
+                    'about.txt' : '\n\nLets go on a vacation together\n\n'
                 },
                 razorpay: {
                     'pay.sh' : '\n\nDon\'t get smart with me!\n\n'
@@ -20,7 +20,15 @@ const mapDb = {
 
         },
         Movies: {
-
+            romance : {
+                favorites: '\nPS I Love you\nCasablanca\n'
+            },
+            comedy: {
+                favorites: '\nSnatch\nToy Story\nAndaz Apna Apna'
+            },
+            action: {
+                favorites: '\nTop Gun\nInception\nInterstellar'
+            },
         },
         Library: {
 

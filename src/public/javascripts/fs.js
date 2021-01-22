@@ -1,6 +1,6 @@
 var fileSystem = {
     dir: {
-        'help.txt': 'Maybe you should quit? Well.. let me get you started, type help',
+        'help.txt': '\n\nSo soon? Well.. let me get you started, type help\n\n',
     },
     /**
      * Adds the folders to root

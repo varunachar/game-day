@@ -28,7 +28,7 @@ class Puzzle {
 }
 const puzzleSolutions = {
     "whatzit1" : new Puzzle("whatzit1", "Too close for comfort", 1),
-    "whatzit2" : new Puzzle("whatzit2", "Nothing new under the sun", 2),
+    "whatzit2" : new Puzzle("whatzit2", "Top gun", 2),
     "playPuz" : new Puzzle("playPuz", "Too close for comfort", 3),
 }
 
