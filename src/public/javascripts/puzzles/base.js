@@ -29,7 +29,7 @@ function processAnswer(currentPuzzle, next) {
 
 function checkSolution(puzzle, answer) {
     return jQuery.ajax({
-        "url": '/puzzles',
+        "url": BASE_URL+'/puzzles',
         "method": "POST",
         "headers": {
             "Content-Type": "application/json",

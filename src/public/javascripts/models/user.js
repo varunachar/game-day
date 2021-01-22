@@ -25,7 +25,7 @@ class User {
     playLevel(playFn) {
         term.pause();
         jQuery.ajax({
-            "url": '/puzzles/level',
+            "url": BASE_URL+'/puzzles/level',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json",

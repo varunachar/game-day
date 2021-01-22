@@ -8,5 +8,5 @@ function razorpays() {
 }
 
 function youWin() {
-    term.echo("\n\n\n\n You win, you deserve it!");
+    term.echo("\n\n\n\nYou win, you deserve it!");
 }

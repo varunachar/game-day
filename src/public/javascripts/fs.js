@@ -17,7 +17,7 @@ var fileSystem = {
      */
     isLocked: function(dir) {
         return jQuery.ajax({
-            "url": '/map/folder',
+            "url": BASE_URL+'/map/folder',
             "method": "POST",
             "timeout": 10,
             "headers": {

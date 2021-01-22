@@ -35,7 +35,7 @@ function start() {
                 term.pause();
                 // Register the user
                 jQuery.ajax({
-                    "url": '/users/register',
+                    "url": BASE_URL+'/users/register',
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json"

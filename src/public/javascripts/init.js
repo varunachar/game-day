@@ -1,6 +1,6 @@
 // Fake in memory filesystem
 
-var BASE_URL = 'localhost:3000/';
+var BASE_URL = 'https://ed8a4f83da3b.ngrok.io';
 
 var path = [];
 var cwd = fileSystem.dir;
