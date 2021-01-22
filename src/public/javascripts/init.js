@@ -1,6 +1,6 @@
 // Fake in memory filesystem
 
-var BASE_URL = 'https://ed8a4f83da3b.ngrok.io';
+var BASE_URL = 'http://localhost:3000';
 
 var path = [];
 var cwd = fileSystem.dir;
@@ -130,8 +130,6 @@ function completion(string, callback) {
 }
 var term = $('body').terminal(commands, {
     prompt: 'user@rzp-engg:/' + path.join('/') + '$ ',
+    greetings: "Razorpay Engineering, copywrite 2021",
     completion: completion,
 });
-
-// Hide the copy write text
-term.update(0, "Razorpay Engineering, copywrite 2021");

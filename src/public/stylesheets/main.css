@@ -67,14 +67,14 @@ body .shell .terminal .cmd {
     background-color: var(--background, #222) !important;
 }
 .shell .terminal.content {
-    font-size: 12px;
+    font-size: 20px;
 }
 .cmd {
     background-color: inherit;
 }
 @supports (--css: variables) {
     .shell .terminal.content {
-        font-size: calc(var(--size, 1) * 12px);
+        font-size: calc(var(--size, 1) * 20px);
     }
 }
 /* fix for Firefox */
@@ -98,5 +98,5 @@ body .shell .terminal .cmd {
 }
 
 .scramble {
-    font-size: 15;
+    font-size: 15px;
 }
