@@ -61,7 +61,6 @@ function generateId() {
  * @param {Object} user 
  */
 function saveUser(user) {
-  user.userId = generateId();
   userDb.usersDb.save(user);
   return user;
 }

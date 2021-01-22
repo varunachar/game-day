@@ -13,6 +13,10 @@ const usersDb = {
      */
     save: function(user) {
         this[user.id] = user;
+    },
+
+    sortByLeader: function() {
+      return this;  
     }
 }
 
