@@ -21,13 +21,21 @@ const mapDb = {
         },
         Movies: {
             romance : {
-                favorites: '\nPS I Love you\nCasablanca\n'
+                "favorites.txt": '\nPS I Love you\nCasablanca\n'
             },
             comedy: {
-                favorites: '\nSnatch\nToy Story\nAndaz Apna Apna'
+                "favorites.txt": '\nSnatch\nToy Story\nAndaz Apna Apna'
             },
             action: {
-                favorites: '\nTop Gun\nInception\nInterstellar'
+                "top gun": {
+                    'birdie.sh' : "\n\n\nSon, your ego is writing checks your body can't cash\n\n\n"
+                },
+                "need for speed": {
+                    'speed.sh': "\n\n\nRacers should race, cops should eat donuts\n\n\n"
+                },
+                "interstellar": {
+                    'tesseract.txt': "\n\n\n\"They\" aren't going to come help today" 
+                },
             },
         },
         Library: {

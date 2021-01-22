@@ -52,16 +52,6 @@ router.post('/register', function (req, res, next) {
   }))
 });
 
-/* GET users listing. */
-router.post('/level', function (req, res, next) {
-  var playable = false;
-  var user = userDb.usersDb.get(req.headers['userId']);
-  
-  res.send(JSON.stringify({
-    playable: playable
-  }))
-});
-
 function generateId() {
   return uuidv4();
 }

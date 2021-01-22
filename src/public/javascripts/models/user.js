@@ -25,7 +25,7 @@ class User {
     playLevel(playFn) {
         term.pause();
         jQuery.ajax({
-            "url": '/users/level',
+            "url": '/puzzles/level',
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json",
@@ -33,7 +33,8 @@ class User {
             },
             data: JSON.stringify({puzzle : playFn.name})
         }).done(function (resp) {
-            if(!resp.isPlayable) {
+            var playable = JSON.parse(resp).playable;
+            if(!playable) {
                 term.echo("Don't get ahead of yourself. Finish the others first");
             }
             else {

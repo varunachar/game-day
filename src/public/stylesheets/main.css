@@ -96,3 +96,7 @@ body .shell .terminal .cmd {
 {
 	background-color: var(--color, #aaa);
 }
+
+.scramble {
+    font-size: 15;
+}

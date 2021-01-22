@@ -11,6 +11,6 @@ function sh(file) {
         term.echo('sh: ' + file + ' is not an executable');
         return;
     }
-    var commandName = file.split('.')[0];
-    window[commandName]();
+    var puzzle = file.split('.')[0];
+    window[puzzle]();
 }
