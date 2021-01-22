@@ -32,16 +32,6 @@ class User {
 
 }
 
-function checkUser(req) {
-  var userId = req.headers['userid'];
-  if (!userId) {
-      var err = new Error();
-      err.status = 404;
-      return err;
-  };
-  return null;
-}
-
 /* GET users listing. */
 router.post('/register', function (req, res, next) {
   var user = new User(req.body.name, req.body.email, req.body.mobile);

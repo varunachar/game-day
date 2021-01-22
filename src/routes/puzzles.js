@@ -3,8 +3,12 @@ var mapDb = require('../data/mapDb');
 var userDb = require('../data/userDb');
 var router = express.Router();
 
+function getUserId(req) {
+    return req.headers['userid'];
+}
+
 function checkUser(req) {
-    var userId = req.headers['userid'];
+    var userId = getUserId(req);
     if (!userId) {
         var err = new Error();
         err.status = 404;
@@ -46,7 +50,7 @@ router.post('/', function (req, res, next) {
     var puzzleName = req.body.puzzle;
     var isCorrect = false;
     var puzzle = puzzleSolutions[puzzleName];
-    var user = userDb.usersDb.get(req.headers['userid']);
+    var user = userDb.usersDb.get(getUserId(req));
     if(puzzle.level > user.level+1) {
         var err = new Error("You cheat!");
         err.status = 401;
@@ -62,7 +66,7 @@ router.post('/', function (req, res, next) {
 /* GET users listing. */
 router.post('/level', function (req, res, next) {
     var playable = false;
-    var user = userDb.usersDb.get(req.headers['userid']);
+    var user = userDb.usersDb.get(getUserId(req));
     var puzzle = puzzleSolutions[req.body.puzzle];
     if(puzzle.level === user.level+1) {
         playable = true;
