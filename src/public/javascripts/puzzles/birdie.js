@@ -19,7 +19,7 @@ function scramble2() {
 }
 
 function scramble3() {
-    term.echo("\n " +
+    term.echo("\nKeep going.. " +
         "\n[[b;green;;;scramble]A H R I L G M O T]"
     );
     processAnswer(scramble3, scramble4);
