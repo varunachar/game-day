@@ -20,8 +20,8 @@ const mapDb = {
 
         },
         Movies: {
-            romance : {
-                "favorites.txt": '\nPS I Love you\nCasablanca\n'
+            horror : {
+                "favorites.txt": '\nExorcist\nCabin in the woods\n'
             },
             comedy: {
                 "favorites.txt": '\nSnatch\nToy Story\nAndaz Apna Apna'
